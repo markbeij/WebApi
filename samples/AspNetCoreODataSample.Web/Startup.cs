@@ -42,6 +42,12 @@ namespace AspNetCoreODataSample.Web
             {
                 builder.Select().Expand().Filter().OrderBy().MaxTop(100).Count();
 
+                builder.MapRoute(
+                    name: "default",
+                    template: "",
+                    defaults: new { controller = "Home", action = "Index" });
+                builder.EnableDependencyInjection();
+
                 builder.MapODataServiceRoute("odata1", "efcore", model);
 
                 builder.MapODataServiceRoute("odata2", "inmem", model);
